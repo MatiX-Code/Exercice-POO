@@ -1,9 +1,11 @@
 <?php
 
+require_once 'Seance.php';
+
 class BilletPleinTarif{
-    private int $numero;
-    private float $prix;
-    private Seance $seance;
+    protected int $numero;
+    protected float $prix;
+    protected Seance $seance;
 
     public function __construct(int $newNumero, float $newPrix,Seance $seance){
         $this-> numero = $newNumero;
@@ -22,8 +24,17 @@ class BilletPleinTarif{
     public function setPrix(float $newPrix): void{
         $this-> prix = $newPrix;
     }
-    public function getSeance(): Seance{
-        return $this-> seance;
+    public function calculerPrix(): float{
+        return $this -> prix;
+    }
+    public function imprimerDetail(): void {
+        // On appelle $this->calculerPrix() pour qu'il prenne en compte 
+        // le prix spécifique de la classe fille (plein tarif, réduit ou enfant)
+        $prixFinal = $this->calculerPrix(); 
+
+        echo " Le prix du billet est de " . $prixFinal . " € et son numéro est le " . $this->numero;
+        echo " Détails de la séance : " . $this->seance->afficherDetails();
     }
 }
+
 ?>

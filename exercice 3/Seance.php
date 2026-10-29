@@ -3,11 +3,12 @@
 class Seance{
     private string $date;  
     private string $heure;  
-    private Film $film;
+    private string $film;
 
-    public function __construct(string $newDate, string $newHeure){
+    public function __construct(string $newFilm, string $newDate, string $newHeure) {
         $this-> date = $newDate;
         $this -> heure = $newHeure;
+        $this -> film = $newFilm;
 
     }
     public function getDate(): string{
@@ -22,11 +23,14 @@ class Seance{
     public function setHeure(string $newHeure): void{
         $this-> heure = $newHeure;
     }
-    public function getFilm() :Film{
+    public function getFilm() :string{
         return $this-> film;
     }
-    public function setFilm(Film $newFilm){
+    public function setFilm(string $newFilm){
         $this-> film =$newFilm;
+    }
+    public function afficherDetails(){
+        return "Film : " . $this->film . ", Date : " . $this->date . ", Heure : " . $this->heure;
     }
 }
 

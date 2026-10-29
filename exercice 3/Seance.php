@@ -1,12 +1,14 @@
 <?php
 
 class Seance{
-    private string $date;
-    private string $film;
+    private string $date;  
+    private string $heure;  
+    private Film $film;
 
-    public function __construct(string $newDate, string $newFilm){
+    public function __construct(string $newDate, string $newHeure){
         $this-> date = $newDate;
-        $this -> film = $newFilm;
+        $this -> heure = $newHeure;
+
     }
     public function getDate(): string{
         return $this-> date;
@@ -14,11 +16,17 @@ class Seance{
     public function setDate(string $newDate): void{
         $this-> date = $newDate;
     }
-    public function getFilm(): string{
+    public function getHeure(): string{
+        return $this-> heure;
+    }
+    public function setHeure(string $newHeure): void{
+        $this-> heure = $newHeure;
+    }
+    public function getFilm() :Film{
         return $this-> film;
     }
-    public function setFilm(string $newFilm): void{
-        $this-> film = $newFilm;
+    public function setFilm(Film $newFilm){
+        $this-> film =$newFilm;
     }
 }
 
